@@ -1,0 +1,63 @@
+﻿<Page
+    x:Class="CMAUniversal.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CMAUniversal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="White">
+        <Grid>
+            <StackPanel DataContext="{Binding Path=User}" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Padding="20">
+                <Ellipse Width="50" Height="50" Margin="10">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="{Binding ImageUrl}"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <TextBlock Text="Hello there," Foreground="#FF319997" FontSize="15" HorizontalAlignment="Center" />
+                <TextBlock FontSize="20" Foreground="Gray" HorizontalAlignment="Center">
+                    <Run Text="{Binding FirstName }" /> <Run Text="{Binding LastName }" />
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+        
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Ask SAM" Width="300" Height="300">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Color" Storyboard.TargetName="bgBorder" To="#FF319997" Duration="0:0:0" />
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Ellipse StrokeThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Ellipse.Stroke>
+                                    <SolidColorBrush x:Name="bgBorder" Color="#FFFF" />
+                                </Ellipse.Stroke>
+                            </Ellipse>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Image Source="Assets/doctor.png" Width="100" Height="100"/>
+                                <TextBlock FontSize="30" Foreground="#FF319997" Padding="20" Text="{TemplateBinding Content}" />
+                            </StackPanel>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
+            <StackPanel Orientation="Vertical" Visibility="{Binding HasSymptom}" >
+                <TextBlock Text="Your symptom:" FontSize="15" Foreground="#FF319997" HorizontalAlignment="Center" />
+                <TextBlock Text="{Binding SymptomText}" Foreground="Gray" Padding="20,0,20,20" FontSize="20" />
+                <ProgressBar IsIndeterminate="True" HorizontalAlignment="Stretch" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

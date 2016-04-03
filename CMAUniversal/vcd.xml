@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
+  <CommandSet xml:lang="en-us">
+    <CommandPrefix> SAM </CommandPrefix>
+    <Example> I have a headache </Example>
+    <Command Name="showWidgets">
+      <Example> I have a headacke</Example>
+      <ListenFor> [I] [have] [a] {symptom} </ListenFor>
+      <Feedback> Assisting you with your {symptom} </Feedback>
+      <Navigate/>
+    </Command>
+
+    <PhraseList Label="symptom">
+      <Item> headache </Item>
+      <Item> stomachache </Item>
+      <Item> ankle sprain</Item>
+      <Item> sprained ankle </Item>
+      <Item> twisted ankle </Item>
+    </PhraseList>
+
+  </CommandSet>
+
+  <!-- Other CommandSets for other languages -->
+
+</VoiceCommands>
