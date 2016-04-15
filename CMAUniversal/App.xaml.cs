@@ -51,6 +51,7 @@ namespace CMAUniversal
             }
 
 #endif
+            await CMAProxy.Instance.RetrieveLocation();
             await CMAProxy.Instance.RetrieveUserInfo();
 
             Frame rootFrame = Window.Current.Content as Frame;

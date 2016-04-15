@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,5 +54,21 @@ namespace LuisParser
         public string query { get; set; }
         public List<Intent> intents { get; set; }
         public List<Entity> entities { get; set; }
+    }
+
+
+    [JsonObject]
+    public class MapEntity
+    {
+        [JsonProperty("EntityID")]
+        public string EntityID { get; set; }
+        [JsonProperty("DisplayName")]
+        public string DisplayName { get; set; }
+        [JsonProperty("Latitude")]
+        public double Latitude { get; set; }
+        [JsonProperty("Longitude")]
+        public double Longitude { get; set; }
+        [JsonProperty("__Distance")]
+        public double Distance { get; set; }
     }
 }
